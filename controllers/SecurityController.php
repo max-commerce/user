@@ -38,7 +38,7 @@ class SecurityController extends Controller {
                 }
             }
         } else {
-            $this->redirect('/');
+            return $this->redirect('/');
         }
 
      return $this->render('login',[
