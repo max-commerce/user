@@ -1,0 +1,21 @@
+{
+    "name": "max-commerce/user",
+    "description": "User module for maxcommerce",
+    "homepage": "http://maxcommerce.ru/",
+    "type": "project",
+    "minimum-stability": "dev",
+    "repositories": [
+        {
+            "type": "git",
+            "url":  "https://github.com/max-commerce/user.git"
+        }
+    ],
+    "require": {
+        "max-commerce/user": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "maxcom\\user\\": ""
+        }
+    }
+}
