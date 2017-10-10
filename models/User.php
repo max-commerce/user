@@ -3,6 +3,7 @@
 namespace maxcom\user\models;
 
 use Yii;
+use yii\web\IdentityInterface;
 
 
 /**
@@ -20,8 +21,34 @@ use Yii;
  *
  * @property ShopProfiles $shopProfiles
  */
-class User extends \yii\db\ActiveRecord
+class User extends \yii\db\ActiveRecord implements IdentityInterface
 {
+    public $password_repeat;
+
+    public static function findIdentity($id)
+    {
+        return static::findOne($id);
+    }
+
+    public static function findIdentityByAccessToken($token, $type = null)
+    {
+        return static::findOne(['activkey' => $token]);
+    }
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function getAuthKey()
+    {
+        return $this->activkey;
+    }
+
+    public function validateAuthKey($authKey)
+    {
+        return $this->activkey === $authKey;
+    }
     /**
      * @inheritdoc
      */
@@ -44,7 +71,9 @@ class User extends \yii\db\ActiveRecord
             [['email'], 'unique'],
         ];
     }
-
+    public function findByUsername($username){
+        return self::find()->where(['username' => $username])->one();
+    }
     /**
      * @inheritdoc
      */
