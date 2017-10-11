@@ -71,9 +71,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
             [['email'], 'unique'],
         ];
     }
-    public function findByUsername($username){
-        return self::find()->where(['username' => $username])->one();
-    }
+
     /**
      * @inheritdoc
      */

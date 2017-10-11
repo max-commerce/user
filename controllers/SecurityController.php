@@ -1,5 +1,6 @@
 <?php
 namespace maxcom\user\controllers;
+use maxcom\user\models\LoginForm;
 use maxcom\user\models\Profiles;
 use maxcom\user\models\User;
 use yii\web\Controller;
@@ -22,15 +23,14 @@ class SecurityController extends Controller {
 
     public function actionLogin(){
         if(\Yii::$app->user->isGuest){
-            $model = new User();
+            $model = new LoginForm();
             if(\Yii::$app->request->isPost && $model->load(\Yii::$app->request->post())){
                 $user = $model->findByUsername($model->username); // пока так
 
                 if(!empty($user)){
-//                    echo $this->module->encrypting($model->password) . ' ---- '. $user->password; exit;
                     if($this->module->encrypting($model->password) == $user->password) {
-                        \Yii::$app->user->login($user,$this->module->loginDuration);
-                        \Yii::$app->session->setFlash('success','Добро пожаловать,'. $user->username);
+                        \Yii::$app->user->login($user, $model->rememberMe ? $this->module->loginDuration : 0);
+                        \Yii::$app->session->setFlash('success','Добро пожаловать, '. $user->username);
                         return $this->redirect('/');
                     }
                 } else {
