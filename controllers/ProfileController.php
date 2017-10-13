@@ -14,8 +14,8 @@ class ProfileController extends Controller {
         }
         $userModel = \Yii::$app->user->identity;
         $profile = $userModel->profile;
-        
-        if(\Yii::$app->request->isPost && $profile->load(\Yii::$app->request->post()) && $profile->save()){
+
+        if(\Yii::$app->request->isPost && $userModel->load(\Yii::$app->request->post()) && $userModel->save() && $profile->load(\Yii::$app->request->post()) && $profile->save()){
                 \Yii::$app->session->setFlash('success','Profile settings sucessfully saved');
         }
         return $this->render('update',[
