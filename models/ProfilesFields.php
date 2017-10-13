@@ -4,6 +4,7 @@ namespace maxcom\user\models;
 
 use Yii;
 
+
 /**
  * This is the model class for table "shop_profiles_fields".
  *
@@ -46,7 +47,6 @@ class ProfilesFields extends \yii\db\ActiveRecord
             [['title', 'match', 'range', 'error_message', 'default', 'widget'], 'string', 'max' => 255],
         ];
     }
-
     /**
      * @inheritdoc
      */

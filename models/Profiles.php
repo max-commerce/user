@@ -3,6 +3,7 @@
 namespace maxcom\user\models;
 
 use Yii;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "shop_profiles".
@@ -15,6 +16,7 @@ use Yii;
  */
 class Profiles extends \yii\db\ActiveRecord
 {
+    public $profileFields;
     /**
      * @inheritdoc
      */
@@ -22,16 +24,50 @@ class Profiles extends \yii\db\ActiveRecord
     {
         return 'shop_profiles';
     }
-
+    public function init(){
+        $this->profileFields = ProfilesFields::find()->orderBy('position ASC')->all();
+    }
     /**
      * @inheritdoc
      */
     public function rules()
     {
-        return [
-            [['first_name', 'last_name'], 'string', 'max' => 255],
+
+        $rules = [
+            //[['first_name', 'last_name'], 'string', 'max' => 255],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
         ];
+
+        foreach ($this->profileFields as $profileField) {
+            switch ($profileField->field_type) {
+                case 'INTEGER':
+                    $type = 'integer';
+                    break;
+                case 'VARCHAR':
+                    $type = 'string';
+                    break;
+                default:
+                    $type = 'safe';
+            }
+            $attribute = $profileField->varname;
+
+            $rules[$profileField->id] = [[$attribute],$type];
+
+            if($profileField->field_size > 0) {
+                if($type != 'integer') {
+                    $rules[$profileField->id]['max'] = $profileField->field_size;
+                }
+            }
+
+            if($profileField->required) {
+                $rules[] = [[$profileField->varname],'required'];
+            }
+        }
+
+
+        return $rules;
+
+
     }
 
     /**
@@ -39,11 +75,15 @@ class Profiles extends \yii\db\ActiveRecord
      */
     public function attributeLabels()
     {
-        return [
+        $labels =  [
             'user_id' => 'User ID',
             'first_name' => 'First Name',
             'last_name' => 'Last Name',
         ];
+        foreach ($this->profileFields as $profileField){
+            $labels[$profileField->varname] = $profileField->title;
+        }
+        return $labels;
     }
 
     /**
