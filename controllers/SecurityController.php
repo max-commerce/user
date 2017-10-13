@@ -82,7 +82,8 @@ class SecurityController extends Controller {
         } elseif (!empty(\Yii::$app->request->get('hash'))) {
                 $user = User::findOne(['activkey' => \Yii::$app->request->get('hash')]);
                 if(!empty($user)) {
-                    $user->password = substr($this->module->encrypting(rand(0,1000)),0,8);
+                    $password = substr($this->module->encrypting(rand(0,1000)),0,8);
+                    $user->password = $this->module->encrypting($password);
                     $user->activkey = $this->module->encrypting(rand(0,1000));
                     if($user->save()) {
                         \Yii::$app
@@ -91,7 +92,7 @@ class SecurityController extends Controller {
                             ->setFrom(\Yii::$app->params['supportEmail'])
                             ->setTo($user->email)
                             ->setSubject('New password on'. \Yii::$app->name)
-                            ->setHtmlBody('Your new password on '.\Yii::$app->name.': '.$user->password)
+                            ->setHtmlBody('Your new password on '.\Yii::$app->name.': '.$password)
                             ->send();
                     }
                 }
