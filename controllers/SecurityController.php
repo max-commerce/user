@@ -3,7 +3,9 @@ namespace maxcom\user\controllers;
 use maxcom\user\models\LoginForm;
 use maxcom\user\models\Profiles;
 use maxcom\user\models\RegistrationForm;
+use maxcom\user\models\ResetPasswordForm;
 use maxcom\user\models\User;
+use yii\swiftmailer\Mailer;
 use yii\web\Controller;
 
 class SecurityController extends Controller {
@@ -65,7 +67,41 @@ class SecurityController extends Controller {
     }
 
     public function actionResetPassword(){
+        $formModel = new ResetPasswordForm();
+        if(\Yii::$app->request->isPost && $formModel->load(\Yii::$app->request->post()) && $formModel->validate()){
+                \Yii::$app
+                    ->mailer
+                    ->compose()
+                    ->setFrom(\Yii::$app->params['supportEmail'])
+                    ->setTo($formModel->email)
+                    ->setSubject('Reset password on'. \Yii::$app->name)
+                    ->setHtmlBody('<a href="http://'.$_SERVER['HTTP_HOST'].'/user/security/reset-password?hash='.$formModel->user->activkey.'">Click here for reset!</a>')
+                    ->send();
+                \Yii::$app->session->setFlash('success','Please check your email for reset password');
+                return $this->redirect('/',301);
+        } elseif (!empty(\Yii::$app->request->get('hash'))) {
+                $user = User::findOne(['activkey' => \Yii::$app->request->get('hash')]);
+                if(!empty($user)) {
+                    $user->password = substr($this->module->encrypting(rand(0,1000)),0,8);
+                    $user->activkey = $this->module->encrypting(rand(0,1000));
+                    if($user->save()) {
+                        \Yii::$app
+                            ->mailer
+                            ->compose()
+                            ->setFrom(\Yii::$app->params['supportEmail'])
+                            ->setTo($user->email)
+                            ->setSubject('New password on'. \Yii::$app->name)
+                            ->setHtmlBody('Your new password on '.\Yii::$app->name.': '.$user->password)
+                            ->send();
+                    }
+                }
+                \Yii::$app->session->setFlash('success','Check your email for new password');
+                $this->redirect(['/user/security/login']);
+        }
 
+        return $this->render('reset_password',[
+            'formModel' => $formModel,
+        ]);
     }
 
     public function actionChangePassword(){

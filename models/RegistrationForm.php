@@ -7,7 +7,8 @@ class RegistrationForm extends Model {
     public function rules()
     {
         return [
-            [['username','password','password_repeat','email'],'string'],
+            [['username'],'string','min' => 4,'max' => 20],
+            [['password','password_repeat'],'string','min' => 8, 'max' => 30],
             [['email'],'email'],
             [['username','password','password_repeat','email'],'required'],
         ];

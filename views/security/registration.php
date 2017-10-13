@@ -31,7 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'btn btn-success btn-block', 'style' => 'display:block;margin-bottom:5px;']
         ) ?>
         <?= \yii\helpers\Html::a('Sign in', ['/user/security/login']) ?>
-        <?= \yii\helpers\Html::a('Reset', ['/user/security/login'], ['class' => 'pull-right']) ?>
+        <?= \yii\helpers\Html::a('Reset', ['/user/security/reset-password'], ['class' => 'pull-right']) ?>
         <?php \yii\widgets\ActiveForm::end(); ?>
     </div>
 </div>

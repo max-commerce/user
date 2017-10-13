@@ -93,7 +93,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getShopProfiles()
+    public function getProfile()
     {
         return $this->hasOne(Profiles::className(), ['user_id' => 'id']);
     }
