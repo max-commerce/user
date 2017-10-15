@@ -8,7 +8,7 @@ class RegistrationForm extends Model {
     {
         return [
             [['username'],'string','min' => 4,'max' => 20],
-            [['password','password_repeat'],'string','min' => 8, 'max' => 30],
+            [['password','password_repeat'],'string','min' => 8,],
             [['email'],'email'],
             [['username','password','password_repeat','email'],'required'],
         ];

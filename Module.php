@@ -9,6 +9,8 @@ class Module extends BaseModule {
 
     public $hash = 'md5';
 
+    public $emailRegistrationConfirm = false;
+
     public function init()
     {
         parent::init();

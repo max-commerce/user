@@ -1,4 +1,7 @@
 <?php
+/*
+ * @author Vladimir Kurdyukov <numkms@gmail.com>
+ */
 namespace maxcom\user\controllers;
 use maxcom\user\models\LoginForm;
 use maxcom\user\models\Profiles;
@@ -17,10 +20,30 @@ class SecurityController extends Controller {
              if($form->validate()){
                 $user = new User();
                 $user->attributes = $form->attributes;
+                $user->activkey = $this->module->encrypting(rand(0,10000));
+                 if($this->module->emailRegistrationConfirm){
+                     \Yii::$app
+                         ->mailer
+                         ->compose()
+                         ->setFrom(\Yii::$app->params['supportEmail'])
+                         ->setTo($user->email)
+                         ->setSubject('Confirm your registration on '. \Yii::$app->name)
+                         ->setHtmlBody('<a href="http://'.$_SERVER['HTTP_HOST'].'/user/security/email-confirm?hash='.$user->activkey.'">Click here for confirm registration on '.\Yii::$app->name.'</a>')
+                         ->send();
+                 } else {
+                    $user->status = 1;
+                 }
+
                 if($user->save()){
-                    \Yii::$app->user->login($user);
-                    \Yii::$app->session->setFlash('success','Добро пожаловать на '.\Yii::$app->name. ', '.$user->username);
-                    $this->redirect('/');
+                    
+                    if($user->status){
+                        \Yii::$app->user->login($user);
+                        \Yii::$app->session->setFlash('success','Добро пожаловать на '.\Yii::$app->name. ', '.$user->username);
+                    } else {
+                        \Yii::$app->session->setFlash('success','Please check your mailbox and confirm registration');
+                    }
+
+                    return $this->redirect('/');
                 }
              }
         }
@@ -31,6 +54,19 @@ class SecurityController extends Controller {
 
     }
 
+    public function actionEmailConfirm($hash) {
+
+        $user = User::findOne(['activkey' => $hash,'status' => 0]);
+            if(!empty($user)) {
+                $user->status = 1;
+                $user->activkey = $this->module->encrypting(rand(0,1000));
+                $user->save();
+                \Yii::$app->user->login($user);
+                \Yii::$app->session->setFlash('success','Добро пожаловать на '.\Yii::$app->name. ', '.$user->username);
+            }
+            return $this->redirect(['/']);
+    }
+
     public function actionLogin(){
         if(\Yii::$app->user->isGuest){
             $model = new LoginForm();
@@ -38,6 +74,10 @@ class SecurityController extends Controller {
                 $user = $model->findByUsername($model->username); // пока так
                 if(!empty($user)){
                     if($this->module->encrypting($model->password) == $user->password) {
+                        if($user->status == 0) {
+                            Yii::$app->session->setFlash('success','Данный аккаунт не активирован или отключен');
+                            return $this->redirect(['/']);
+                        }
                         \Yii::$app->user->login($user, $model->rememberMe ? $this->module->loginDuration : 0);
                         \Yii::$app->session->setFlash('success','Добро пожаловать, '. $user->username);
                         return $this->redirect('/');
