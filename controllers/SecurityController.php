@@ -3,6 +3,7 @@
  * @author Vladimir Kurdyukov <numkms@gmail.com>
  */
 namespace maxcom\user\controllers;
+use maxcom\user\models\ChangePasswordForm;
 use maxcom\user\models\LoginForm;
 use maxcom\user\models\Profiles;
 use maxcom\user\models\RegistrationForm;
@@ -35,7 +36,7 @@ class SecurityController extends Controller {
                  }
 
                 if($user->save()){
-                    
+
                     if($user->status){
                         \Yii::$app->user->login($user);
                         \Yii::$app->session->setFlash('success','Добро пожаловать на '.\Yii::$app->name. ', '.$user->username);
@@ -145,7 +146,4 @@ class SecurityController extends Controller {
         ]);
     }
 
-    public function actionChangePassword(){
-
-    }
 }

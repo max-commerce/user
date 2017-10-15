@@ -3,7 +3,7 @@ $this->title = 'Profile area';
 ?>
 
 <?php $form = \yii\widgets\ActiveForm::begin()?>
-<h1><?=$this->title?></h1>
+
 <div class="row">
 
     <div class="col-md-8">

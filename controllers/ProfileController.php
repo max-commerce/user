@@ -1,13 +1,14 @@
 <?php
 namespace maxcom\user\controllers;
+use maxcom\user\models\ChangePasswordForm;
 use maxcom\user\models\Profiles;
 use maxcom\user\models\ProfilesFields;
-use yii\base\Controller;
+use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
 class ProfileController extends Controller {
     public $defaultAction = 'update';
-
+    public $layout = 'profile';
     public function actionUpdate(){
         if(\Yii::$app->user->isGuest){
             throw new NotFoundHttpException();
@@ -27,5 +28,15 @@ class ProfileController extends Controller {
         ]);
 
 
+    }
+    public function actionChangePassword(){
+        $form = new ChangePasswordForm();
+        if(\Yii::$app->request->isPost && $form->load(\Yii::$app->request->post()) && $form->save()) {
+            \Yii::$app->session->set('success','Your password has been successfully updated!');
+            return $this->redirect(['/user/profile']);
+        }
+        return $this->render('change-password',[
+            'formModel' => $form,
+        ]);
     }
 }
