@@ -1,4 +1,8 @@
 <?php
+/*
+ * @author Vladimir Kurdyukov <numkms@gmail.com>
+ * @var $userModel \maxcom\user\models\RegistrationForm;
+ */
 $this->title = 'Registration';
 $this->params['breadcrumbs'][] = $this->title;
 ?>

@@ -16,6 +16,9 @@ use yii\web\Controller;
 class SecurityController extends Controller
 {
 
+    /**
+     * @return string|\yii\web\Response
+     */
     public function actionRegistration()
     {
         $form = new RegistrationForm();
@@ -59,6 +62,11 @@ class SecurityController extends Controller
 
     }
 
+    /**
+     * @param $hash
+     * @return \yii\web\Response
+     * Check email registration confirmation
+     */
     public function actionEmailConfirm($hash)
     {
 
@@ -73,6 +81,10 @@ class SecurityController extends Controller
         return $this->redirect(['/']);
     }
 
+    /**
+     * @return string|\yii\web\Response
+     * Just log in user to site if request is post and render form if not
+     */
     public function actionLogin()
     {
 
@@ -110,15 +122,14 @@ class SecurityController extends Controller
 
     }
 
-    public function actionLogout()
-    {
-
-    }
-
-    public function actionResetPassword()
+    /**
+     * @return string|\yii\web\Response
+     * Action render reset password form for reseting user password ????? or if $hash is not null change his password
+     */
+    public function actionResetPassword($hash = null)
     {
         $formModel = new ResetPasswordForm();
-        if (\Yii::$app->request->isPost && $formModel->load(\Yii::$app->request->post()) && $formModel->validate()) {
+        if (empty($hash) && \Yii::$app->request->isPost && $formModel->load(\Yii::$app->request->post()) && $formModel->validate()) {
             \Yii::$app
                 ->mailer
                 ->compose()
@@ -129,7 +140,7 @@ class SecurityController extends Controller
                 ->send();
             \Yii::$app->session->setFlash('success', 'Please check your email for reset password');
             return $this->redirect('/', 301);
-        } elseif (!empty(\Yii::$app->request->get('hash'))) {
+        } elseif (!empty($hash)) {
             $user = User::findOne(['activkey' => \Yii::$app->request->get('hash')]);
             if (!empty($user)) {
                 $password = substr($this->module->encrypting(rand(0, 1000)), 0, 8);

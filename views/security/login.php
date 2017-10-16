@@ -1,4 +1,7 @@
 <?php
+/*
+ * @var $userModel \maxcom\user\models\LoginForm;
+ */
 $this->title = 'Login';
 $this->params['breadcrumbs'][] = $this->title;
 ?>

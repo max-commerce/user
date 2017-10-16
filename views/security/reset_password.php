@@ -1,3 +1,9 @@
+<?php
+/*
+* @author Vladimir Kurdyukov <numkms@gmail.com>
+* @var $formModel \maxcom\user\models\ResetPasswordForm;
+*/
+?>
 <div class="row">
     <div class="col-md-4">
         <div class="well">

@@ -12,11 +12,17 @@ class ProfileController extends Controller
     public $defaultAction = 'update';
     public $layout = 'profile';
 
+    /**
+     * @return string
+     * Execute this action will render profile form for update profile data or throw not found exception if user is guest
+     * @throws NotFoundHttpException
+     */
     public function actionUpdate()
     {
         if (\Yii::$app->user->isGuest) {
             throw new NotFoundHttpException();
         }
+
         $userModel = \Yii::$app->user->identity;
         $profile = $userModel->profile;
         if (empty($profile)) {
@@ -34,6 +40,11 @@ class ProfileController extends Controller
 
     }
 
+    /**
+     * @return string|\yii\web\Response
+     * Execute this action will change password of user or throw http not found exception if user is guest
+     * @throws NotFoundHttpException
+     */
     public function actionChangePassword()
     {
         if (\Yii::$app->user->isGuest) {
