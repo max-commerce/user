@@ -30,6 +30,9 @@ class ProfileController extends Controller {
 
     }
     public function actionChangePassword(){
+        if(\Yii::$app->user->isGuest){
+            throw new NotFoundHttpException();
+        }
         $form = new ChangePasswordForm();
         if(\Yii::$app->request->isPost && $form->load(\Yii::$app->request->post()) && $form->save()) {
             \Yii::$app->session->set('success','Your password has been successfully updated!');
