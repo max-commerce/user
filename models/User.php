@@ -49,6 +49,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     {
         return $this->activkey === $authKey;
     }
+
     /**
      * @inheritdoc
      */

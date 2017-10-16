@@ -3,9 +3,9 @@
         <div class="well">
             For reset your password, please fill email below and check your mail.
         </div>
-        <?php $form = \yii\widgets\ActiveForm::begin();?>
+        <?php $form = \yii\widgets\ActiveForm::begin(); ?>
 
-        <?= $form->field($formModel,'email')->textInput(['placeholder' => 'E-mail'])->label(false) ?>
+        <?= $form->field($formModel, 'email')->textInput(['placeholder' => 'E-mail'])->label(false) ?>
 
         <?= \yii\bootstrap\Html::submitButton(
             'Reset',

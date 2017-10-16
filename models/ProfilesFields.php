@@ -47,6 +47,7 @@ class ProfilesFields extends \yii\db\ActiveRecord
             [['title', 'match', 'range', 'error_message', 'default', 'widget'], 'string', 'max' => 255],
         ];
     }
+
     /**
      * @inheritdoc
      */

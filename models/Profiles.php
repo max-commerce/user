@@ -17,6 +17,7 @@ use yii\db\ActiveRecord;
 class Profiles extends \yii\db\ActiveRecord
 {
     public $profileFields;
+
     /**
      * @inheritdoc
      */
@@ -24,9 +25,12 @@ class Profiles extends \yii\db\ActiveRecord
     {
         return 'shop_profiles';
     }
-    public function init(){
+
+    public function init()
+    {
         $this->profileFields = ProfilesFields::find()->orderBy('position ASC')->all();
     }
+
     /**
      * @inheritdoc
      */
@@ -51,16 +55,16 @@ class Profiles extends \yii\db\ActiveRecord
             }
             $attribute = $profileField->varname;
 
-            $rules[$profileField->id] = [[$attribute],$type];
+            $rules[$profileField->id] = [[$attribute], $type];
 
-            if($profileField->field_size > 0) {
-                if($type != 'integer') {
+            if ($profileField->field_size > 0) {
+                if ($type != 'integer') {
                     $rules[$profileField->id]['max'] = $profileField->field_size;
                 }
             }
 
-            if($profileField->required) {
-                $rules[] = [[$profileField->varname],'required'];
+            if ($profileField->required) {
+                $rules[] = [[$profileField->varname], 'required'];
             }
         }
 
@@ -75,12 +79,12 @@ class Profiles extends \yii\db\ActiveRecord
      */
     public function attributeLabels()
     {
-        $labels =  [
+        $labels = [
             'user_id' => 'User ID',
             'first_name' => 'First Name',
             'last_name' => 'Last Name',
         ];
-        foreach ($this->profileFields as $profileField){
+        foreach ($this->profileFields as $profileField) {
             $labels[$profileField->varname] = $profileField->title;
         }
         return $labels;

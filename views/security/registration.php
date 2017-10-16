@@ -2,11 +2,11 @@
 $this->title = 'Registration';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<h1><?=$this->title?></h1>
+<h1><?= $this->title ?></h1>
 <div class="row">
     <div class="col-md-6">
         <div class="well">
-            Register on <?=Yii::$app->name?> will allow you to use more features :)
+            Register on <?= Yii::$app->name ?> will allow you to use more features :)
         </div>
         <?php
         /* @var $userModel \maxcom\user\models\User */
