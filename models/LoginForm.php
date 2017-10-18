@@ -1,4 +1,5 @@
 <?php
+
 namespace maxcom\user\models;
 
 use yii\base\Model;
@@ -22,5 +23,3 @@ class LoginForm extends Model
         return User::find()->where(['username' => $username])->one();
     }
 }
-
-?>

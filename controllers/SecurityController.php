@@ -1,4 +1,5 @@
 <?php
+
 /*
  * @author Vladimir Kurdyukov <numkms@gmail.com>
  */
@@ -165,5 +166,4 @@ class SecurityController extends Controller
             'formModel' => $formModel,
         ]);
     }
-
 }

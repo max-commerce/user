@@ -4,7 +4,6 @@ namespace maxcom\user\models;
 
 use Yii;
 
-
 /**
  * This is the model class for table "shop_profiles_fields".
  *

@@ -1,4 +1,5 @@
 <?php
+
 namespace maxcom\user\controllers;
 
 use maxcom\user\models\ChangePasswordForm;

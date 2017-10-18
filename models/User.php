@@ -5,7 +5,6 @@ namespace maxcom\user\models;
 use Yii;
 use yii\web\IdentityInterface;
 
-
 /**
  * This is the model class for table "shop_users".
  *
@@ -64,12 +63,11 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
-            [['superuser', 'status'], 'integer'],
-            [['create_at', 'lastvisit_at'], 'safe'],
             [['username'], 'string', 'max' => 20],
             [['password', 'email', 'activkey'], 'string', 'max' => 128],
-            [['username'], 'unique'],
-            [['email'], 'unique'],
+            [['email', 'username'], 'unique'],
+            [['superuser', 'status'], 'integer'],
+            [['create_at', 'lastvisit_at'], 'safe'],
         ];
     }
 

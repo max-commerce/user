@@ -1,7 +1,6 @@
 <?php
-namespace maxcom\user\components;
 
-use yii\base\Component;
+namespace maxcom\user\components;
 
 class User extends \yii\web\User
 {

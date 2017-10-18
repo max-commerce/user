@@ -1,4 +1,5 @@
 <?php
+
 namespace maxcom\user\models;
 
 use yii\base\Model;

@@ -1,4 +1,5 @@
 <?php
+
 namespace maxcom\user\models;
 
 use yii\base\Model;
@@ -24,7 +25,7 @@ class ChangePasswordForm extends Model
                 return false;
             }
             if ($this->new_password != $this->new_password_repeat) {
-                $this->addError('old_password', 'Новый пароль не совпадает с подтверждением.');
+                $this->addError('new_password_repeat', 'Новый пароль не совпадает с подтверждением.');
                 return false;
             }
             return true;
@@ -42,5 +43,3 @@ class ChangePasswordForm extends Model
         }
     }
 }
-
-?>

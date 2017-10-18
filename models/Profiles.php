@@ -68,9 +68,7 @@ class Profiles extends \yii\db\ActiveRecord
             }
         }
 
-
         return $rules;
-
 
     }
 
@@ -81,8 +79,6 @@ class Profiles extends \yii\db\ActiveRecord
     {
         $labels = [
             'user_id' => 'User ID',
-            'first_name' => 'First Name',
-            'last_name' => 'Last Name',
         ];
         foreach ($this->profileFields as $profileField) {
             $labels[$profileField->varname] = $profileField->title;
