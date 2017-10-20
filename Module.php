@@ -2,7 +2,7 @@
 
 namespace maxcom\user;
 
-use \yii\base\Module as BaseModule;
+use yii\base\Module as BaseModule;
 
 /*
  * @author Vladimir Kurdyukov <numkms@gmail.com>
