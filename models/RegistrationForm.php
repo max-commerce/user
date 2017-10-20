@@ -23,7 +23,6 @@ class RegistrationForm extends Model
         if ($this->password == $this->password_repeat) {
             return true;
         } else {
-
         }
     }
 

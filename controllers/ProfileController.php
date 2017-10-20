@@ -37,8 +37,6 @@ class ProfileController extends Controller
             'user' => $userModel,
             'profile' => $profile,
         ]);
-
-
     }
 
     /**

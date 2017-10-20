@@ -44,7 +44,6 @@ class SecurityController extends Controller
                 }
 
                 if ($user->save()) {
-
                     if ($user->status) {
                         \Yii::$app->user->login($user);
                         \Yii::$app->session->setFlash('success', 'Добро пожаловать на ' . \Yii::$app->name . ', ' . $user->username);
@@ -60,7 +59,6 @@ class SecurityController extends Controller
         return $this->render('registration', [
             'formModel' => $form,
         ]);
-
     }
 
     /**
@@ -109,7 +107,6 @@ class SecurityController extends Controller
                 } else {
                     $model->addError('username', 'Логин или пароль не верен');
                     $model->addError('password', 'Логин или пароль не верен');
-
                 }
             }
         } else {
@@ -119,8 +116,6 @@ class SecurityController extends Controller
         return $this->render('login', [
             'userModel' => $model,
         ]);
-
-
     }
 
     /**

@@ -20,8 +20,8 @@ $this->title = 'Profile area';
         </div>
         <div class="col-md-4">
 
-            <?php foreach ($profile->profileFields as $field): ?>
-                <?php if ($field->varname !== 'user_id'): ?>
+            <?php foreach ($profile->profileFields as $field) : ?>
+                <?php if ($field->varname !== 'user_id') : ?>
                     <?= $form->field($profile, $field->varname)->textInput(); ?>
                 <?php endif; ?>
             <?php endforeach; ?>

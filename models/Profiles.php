@@ -69,7 +69,6 @@ class Profiles extends \yii\db\ActiveRecord
         }
 
         return $rules;
-
     }
 
     /**
