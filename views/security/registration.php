@@ -5,7 +5,7 @@ use \yii\helpers\Html;
 
 /*
  * @author Vladimir Kurdyukov <numkms@gmail.com>
- * @var $userModel \maxcom\user\models\RegistrationForm;
+ * @var $userModel \PanteraDigital\YiiYii2User\models\RegistrationForm;
  */
 $this->title = 'Registration';
 $this->params['breadcrumbs'][] = $this->title;
@@ -21,7 +21,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     Register on <?= Yii::$app->name ?> will allow you to use more features :)
                 </p>
                 <?php
-                /* @var $userModel \maxcom\user\models\User */
+                /* @var $userModel \PanteraDigital\YiiYii2User\models\User */
                 $form = ActiveForm::begin(); ?>
 
                 <?= $form->field($formModel, 'email') ?>

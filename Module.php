@@ -1,6 +1,6 @@
 <?php
 
-namespace maxcom\user;
+namespace PanteraDigital\YiiYii2User;
 
 use yii\base\Module as BaseModule;
 

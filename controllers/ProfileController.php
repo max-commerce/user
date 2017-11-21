@@ -1,10 +1,10 @@
 <?php
 
-namespace maxcom\user\controllers;
+namespace PanteraDigital\YiiYii2User\controllers;
 
-use maxcom\user\models\ChangePasswordForm;
-use maxcom\user\models\Profiles;
-use maxcom\user\models\ProfilesFields;
+use PanteraDigital\YiiYii2User\models\ChangePasswordForm;
+use PanteraDigital\YiiYii2User\models\Profiles;
+use PanteraDigital\YiiYii2User\models\ProfilesFields;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace maxcom\user\models;
+namespace PanteraDigital\YiiYii2User\models;
 
 use Yii;
 use yii\db\ActiveRecord;

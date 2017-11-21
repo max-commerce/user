@@ -3,14 +3,14 @@
 /*
  * @author Vladimir Kurdyukov <numkms@gmail.com>
  */
-namespace maxcom\user\controllers;
+namespace PanteraDigital\YiiYii2User\controllers;
 
-use maxcom\user\models\ChangePasswordForm;
-use maxcom\user\models\LoginForm;
-use maxcom\user\models\Profiles;
-use maxcom\user\models\RegistrationForm;
-use maxcom\user\models\ResetPasswordForm;
-use maxcom\user\models\User;
+use PanteraDigital\YiiYii2User\models\ChangePasswordForm;
+use PanteraDigital\YiiYii2User\models\LoginForm;
+use PanteraDigital\YiiYii2User\models\Profiles;
+use PanteraDigital\YiiYii2User\models\RegistrationForm;
+use PanteraDigital\YiiYii2User\models\ResetPasswordForm;
+use PanteraDigital\YiiYii2User\models\User;
 use yii\swiftmailer\Mailer;
 use yii\web\Controller;
 

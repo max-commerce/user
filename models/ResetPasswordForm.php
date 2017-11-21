@@ -1,5 +1,5 @@
 <?php
-namespace maxcom\user\models;
+namespace PanteraDigital\YiiYii2User\models;
 
 use yii\base\Model;
 

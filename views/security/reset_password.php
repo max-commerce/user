@@ -5,7 +5,7 @@ use \yii\helpers\Html;
 
 /*
 * @author Vladimir Kurdyukov <numkms@gmail.com>
-* @var $formModel \maxcom\user\models\ResetPasswordForm;
+* @var $formModel \PanteraDigital\YiiYii2User\models\ResetPasswordForm;
 */
 
 $this->title = 'Reset password';

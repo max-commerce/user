@@ -6,7 +6,7 @@
     "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
-            "pantera-digital\\yii-yii2-user\\": ""
+            "PanteraDigital\\YiiYii2User\\": ""
         }
     }
 }

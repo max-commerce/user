@@ -1,6 +1,6 @@
 <?php
 
-namespace maxcom\user\components;
+namespace PanteraDigital\YiiYii2User\components;
 
 class User extends \yii\web\User
 {
