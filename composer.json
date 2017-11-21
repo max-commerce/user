@@ -1,21 +1,12 @@
 {
-    "name": "max-commerce/user",
-    "description": "User module for maxcommerce",
-    "homepage": "http://maxcommerce.ru/",
-    "type": "project",
+    "name": "pantera-digital/yii-yii2-user",
+    "description": "This module is a port of Yii 1.1: yii-user extension http://www.yiiframework.com/extension/yii-user/ to Yii2 codebase. It depends on yii-user extension database scheme. You can use it in your Yii2 projects ported from Yii1.x",
+    "homepage": "https://github.com/pantera-digital/yii-yii2-user",
+    "type": "yii2-extension",
     "minimum-stability": "dev",
-    "repositories": [
-        {
-            "type": "git",
-            "url":  "https://github.com/max-commerce/user.git"
-        }
-    ],
-    "require": {
-        "max-commerce/user": "dev-master"
-    },
     "autoload": {
         "psr-4": {
-            "maxcom\\user\\": ""
+            "pantera-digital\\yii-yii2-user\\": ""
         }
     }
 }
