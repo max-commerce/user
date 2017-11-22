@@ -1,6 +1,6 @@
 <?php
 
-namespace PanteraDigital\YiiYii2User\components;
+namespace pantera\YiiYii2User\components;
 
 class User extends \yii\web\User
 {
