@@ -1,10 +1,10 @@
 <?php
 
-namespace PanteraDigital\YiiYii2User\controllers;
+namespace pantera\YiiYii2User\controllers;
 
-use PanteraDigital\YiiYii2User\models\ChangePasswordForm;
-use PanteraDigital\YiiYii2User\models\Profiles;
-use PanteraDigital\YiiYii2User\models\ProfilesFields;
+use pantera\YiiYii2User\models\ChangePasswordForm;
+use pantera\YiiYii2User\models\Profiles;
+use pantera\YiiYii2User\models\ProfilesFields;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 

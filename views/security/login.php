@@ -4,7 +4,7 @@ use \yii\widgets\ActiveForm;
 use \yii\helpers\Html;
 
 /*
- * @var $userModel \PanteraDigital\YiiYii2User\models\LoginForm;
+ * @var $userModel \pantera\YiiYii2User\models\LoginForm;
  */
 $this->title = 'Login';
 $this->params['breadcrumbs'][] = $this->title;
@@ -20,7 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     Please login for use all features of <?= Yii::$app->name ?>
                 </p>
                 <?php
-                /* @var $userModel \PanteraDigital\YiiYii2User\models\User */
+                /* @var $userModel \pantera\YiiYii2User\models\User */
                 $form = ActiveForm::begin(); ?>
 
                 <?= $form->field($userModel, 'username')->textInput() ?>

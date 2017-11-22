@@ -1,6 +1,6 @@
 <?php
 
-namespace PanteraDigital\YiiYii2User;
+namespace pantera\YiiYii2User;
 
 use yii\base\Module as BaseModule;
 

@@ -1,5 +1,5 @@
 <?php
-namespace PanteraDigital\YiiYii2User\models;
+namespace pantera\YiiYii2User\models;
 
 use yii\base\Model;
 

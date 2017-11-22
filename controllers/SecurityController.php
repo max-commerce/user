@@ -3,14 +3,14 @@
 /*
  * @author Vladimir Kurdyukov <numkms@gmail.com>
  */
-namespace PanteraDigital\YiiYii2User\controllers;
+namespace pantera\YiiYii2User\controllers;
 
-use PanteraDigital\YiiYii2User\models\ChangePasswordForm;
-use PanteraDigital\YiiYii2User\models\LoginForm;
-use PanteraDigital\YiiYii2User\models\Profiles;
-use PanteraDigital\YiiYii2User\models\RegistrationForm;
-use PanteraDigital\YiiYii2User\models\ResetPasswordForm;
-use PanteraDigital\YiiYii2User\models\User;
+use pantera\YiiYii2User\models\ChangePasswordForm;
+use pantera\YiiYii2User\models\LoginForm;
+use pantera\YiiYii2User\models\Profiles;
+use pantera\YiiYii2User\models\RegistrationForm;
+use pantera\YiiYii2User\models\ResetPasswordForm;
+use pantera\YiiYii2User\models\User;
 use yii\swiftmailer\Mailer;
 use yii\web\Controller;
 

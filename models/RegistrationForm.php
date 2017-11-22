@@ -1,6 +1,6 @@
 <?php
 
-namespace PanteraDigital\YiiYii2User\models;
+namespace pantera\YiiYii2User\models;
 
 use yii\base\Model;
 
@@ -29,7 +29,7 @@ class RegistrationForm extends Model
     public function beforeValidate()
     {
         if ($this->username) {
-            $user = \PanteraDigital\YiiYii2User\models\User::findOne(['username' => $this->username]);
+            $user = \pantera\YiiYii2User\models\User::findOne(['username' => $this->username]);
             if (!empty($user)) {
                 $this->addError('username', 'This user is already exsist');
                 return false;
@@ -37,7 +37,7 @@ class RegistrationForm extends Model
         }
 
         if ($this->email) {
-            $user = \PanteraDigital\YiiYii2User\models\User::findOne(['email' => $this->email]);
+            $user = \pantera\YiiYii2User\models\User::findOne(['email' => $this->email]);
             if (!empty($user)) {
                 $this->addError('email', 'This email is already exsist');
                 return false;
