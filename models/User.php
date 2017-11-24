@@ -22,11 +22,37 @@ use yii\web\IdentityInterface;
  */
 class User extends \yii\db\ActiveRecord implements IdentityInterface
 {
+
+    const STATUS_DELETED = 0;
+    const STATUS_ACTIVE = 1;
+
     public $password_repeat;
 
     public static function findIdentity($id)
     {
         return static::findOne($id);
+    }
+
+    /**
+     * Finds user by username
+     *
+     * @param string $username
+     * @return static|null
+     */
+    public static function findByUsername($username)
+    {
+        return static::findOne(['username' => $username, 'status' => self::STATUS_ACTIVE]);
+    }
+
+    /**
+     * Validates password
+     *
+     * @param string $password password to validate
+     * @return bool if password provided is valid for current user
+     */
+    public function validatePassword($password)
+    {
+        return md5($password) === $this->password;
     }
 
     public static function findIdentityByAccessToken($token, $type = null)

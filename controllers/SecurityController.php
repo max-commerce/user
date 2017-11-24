@@ -90,7 +90,7 @@ class SecurityController extends Controller
         if (\Yii::$app->user->isGuest) {
             $model = new LoginForm();
             if (\Yii::$app->request->isPost && $model->load(\Yii::$app->request->post())) {
-                $user = $model->findByUsername($model->username); // пока так
+                $user = User::findByUsername($model->username);
                 if (!empty($user)) {
                     if ($this->module->encrypting($model->password) == $user->password) {
                         if ($user->status == 0) {
