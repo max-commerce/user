@@ -16,3 +16,7 @@ or add
 ```
 
 to the ```require``` section of your `composer.json` file.
+
+## Contributing
+
+Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
