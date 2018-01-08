@@ -21,7 +21,9 @@ $this->params['breadcrumbs'][] = $this->title;
                 </p>
                 <?php
                 /* @var $userModel \pantera\YiiYii2User\models\User */
-                $form = ActiveForm::begin(); ?>
+                $form = ActiveForm::begin([
+                    'id' => 'user-login-form'
+                ]); ?>
 
                 <?= $form->field($userModel, 'username')->textInput() ?>
                 <?= $form->field($userModel, 'password')->passwordInput() ?>

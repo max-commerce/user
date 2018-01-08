@@ -22,7 +22,9 @@ $this->params['breadcrumbs'][] = $this->title;
                 </p>
                 <?php
                 /* @var $userModel \pantera\YiiYii2User\models\User */
-                $form = ActiveForm::begin(); ?>
+                $form = ActiveForm::begin([
+                    'id' => 'user-registration-form'
+                ]); ?>
 
                 <?= $form->field($formModel, 'email') ?>
                 <?= $form->field($formModel, 'username') ?>
