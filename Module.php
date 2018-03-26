@@ -20,7 +20,7 @@ class Module extends BaseModule
      * @var string $userTableName
      * A variable for name of User table
      */
-    public $userTableName = 'user';
+    public $userTableName = 'users';
 
     /**
      * @var string $userTableName
