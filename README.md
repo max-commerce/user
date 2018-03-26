@@ -17,6 +17,24 @@ or add
 
 to the ```require``` section of your `composer.json` file.
 
+#### Добавить в конфиг в секцию ```'components'```:
+```
+'user' => [
+    'class' => 'pantera\YiiYii2User\components\User',
+    'identityClass' => 'pantera\YiiYii2User\models\User',
+    'enableAutoLogin' => true,
+    'identityCookie' => ['name' => '_identity-frontend', 'httpOnly' => true],
+],
+```
+
+#### Добавить в конфиг в секцию ```'modules'```:
+```
+'user' => [
+    'emailRegistrationConfirm' => true,
+    'class' => 'pantera\YiiYii2User\Module',
+],
+```
+
 ## Contributing
 
 Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
