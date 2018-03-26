@@ -2,7 +2,9 @@
 
 namespace pantera\YiiYii2User\models;
 
+use pantera\YiiYii2User\Module;
 use Yii;
+use yii\base\InvalidConfigException;
 
 /**
  * This is the model class for table "shop_profiles_fields".
@@ -31,7 +33,12 @@ class ProfilesFields extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'shop_profiles_fields';
+        /** @var Module $userModule */
+        $userModule = Yii::$app->getModule('user');
+
+        if(!empty($userModule->profilesFieldsTableName)) return $userModule->profilesFieldsTableName;
+
+        throw new InvalidConfigException('Please set a name for user table');
     }
 
     /**

@@ -2,7 +2,9 @@
 
 namespace pantera\YiiYii2User\models;
 
+use pantera\YiiYii2User\Module;
 use Yii;
+use yii\base\InvalidConfigException;
 use yii\db\ActiveRecord;
 
 /**
@@ -23,8 +25,14 @@ class Profiles extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'shop_profiles';
+        /** @var Module $userModule */
+        $userModule = Yii::$app->getModule('user');
+
+        if(!empty($userModule->profilesTableName)) return $userModule->profilesTableName;
+
+        throw new InvalidConfigException('Please set a name for user table');
     }
+
 
     public function init()
     {

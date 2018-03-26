@@ -16,6 +16,25 @@ class Module extends BaseModule
 
     public $emailRegistrationConfirm = false;
 
+    /**
+     * @var string $userTableName
+     * A variable for name of User table
+     */
+    public $userTableName = 'user';
+
+    /**
+     * @var string $userTableName
+     * A variable for name of Profiles table
+     */
+    public $profilesTableName = 'profiles';
+
+    /**
+     * @var string $userTableName
+     * A variable for name of ProfilesFields table
+     */
+    public $profilesFieldsTableName = 'profiles_fields';
+
+
     public function init()
     {
         parent::init();

@@ -2,7 +2,9 @@
 
 namespace pantera\YiiYii2User\models;
 
+use pantera\YiiYii2User\Module;
 use Yii;
+use yii\base\InvalidConfigException;
 use yii\web\IdentityInterface;
 
 /**
@@ -80,7 +82,12 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
      */
     public static function tableName()
     {
-        return 'shop_users';
+        /** @var Module $userModule */
+        $userModule = Yii::$app->getModule('user');
+
+        if(!empty($userModule->userTableName)) return $userModule->userTableName;
+
+        throw new InvalidConfigException('Please set a name for user table');
     }
 
     /**
