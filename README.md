@@ -24,6 +24,9 @@ to the ```require``` section of your `composer.json` file.
     'identityClass' => 'pantera\YiiYii2User\models\User',
     'enableAutoLogin' => true,
     'identityCookie' => ['name' => '_identity-frontend', 'httpOnly' => true],
+    'userTableName' => 'name of your user table',
+    'profilesTableName' => 'name of your profiles table',
+    'profilesFieldsTableName' => 'name of your profiles fields table'
 ],
 ```
 
