@@ -51,7 +51,7 @@ class SecurityController extends Controller
                         \Yii::$app->session->setFlash('success', 'Please check your mailbox and confirm registration');
                     }
 
-                    return $this->redirect('/');
+                    return $this->redirect(['/']);
                 }
             }
         }
@@ -86,7 +86,6 @@ class SecurityController extends Controller
      */
     public function actionLogin()
     {
-
         if (\Yii::$app->user->isGuest) {
             $model = new LoginForm();
             if (\Yii::$app->request->isPost && $model->load(\Yii::$app->request->post())) {
@@ -99,7 +98,7 @@ class SecurityController extends Controller
                         }
                         \Yii::$app->user->login($user, $model->rememberMe ? $this->module->loginDuration : 0);
                         \Yii::$app->session->setFlash('success', 'Добро пожаловать, ' . $user->username);
-                        return $this->redirect('/');
+                        return $this->redirect(['/']);
                     } else {
                         $model->addError('username', 'Логин или пароль не верен');
                         $model->addError('password', 'Логин или пароль не верен');
@@ -110,7 +109,7 @@ class SecurityController extends Controller
                 }
             }
         } else {
-            return $this->redirect('/');
+            return $this->redirect(['/']);
         }
 
         return $this->render('login', [
